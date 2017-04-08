@@ -20,6 +20,14 @@ class VistaDetalleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // MEDIANTE UN CONDICIONAL VOY A COMPROBAR SI EXISTTE PERSONA TIENE ALGO
+        
+        if existePersona != nil {
+            self.txtNombre.text = existePersona.value(forKey: "nombre") as! String?
+            self.txtApellido.text = existePersona.value(forKey: "apellido") as! String?
+            self.txtEdad.text = existePersona.value(forKey: "edad") as! String?
+        }
 
         // Do any additional setup after loading the view.
     }
