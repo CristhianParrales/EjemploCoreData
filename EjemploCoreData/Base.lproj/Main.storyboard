@@ -101,7 +101,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Introduzca Edad" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4lY-OG-vBj">
-                                <rect key="frame" x="16" y="237" width="343" height="30"/>
+                                <rect key="frame" x="16" y="242" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -111,9 +111,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Vista Detalle" id="Ht2-Q5-maS">
-                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="epU-qT-gFo"/>
-                        <barButtonItem key="rightBarButtonItem" title="Guardar" id="tpX-eB-ry4"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="epU-qT-gFo">
+                            <connections>
+                                <action selector="cancelar:" destination="I7C-0e-k3T" id="9LL-Ad-au6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Guardar" id="tpX-eB-ry4">
+                            <connections>
+                                <action selector="guardarRegistro:" destination="I7C-0e-k3T" id="frc-ih-IRx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="txtApellido" destination="UKM-Or-bNe" id="3Cr-9E-R9X"/>
+                        <outlet property="txtEdad" destination="4lY-OG-vBj" id="I75-XY-znQ"/>
+                        <outlet property="txtNombre" destination="PtC-BN-mHo" id="nAb-iU-9bU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kc2-bu-YBr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

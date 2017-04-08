@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 class VistaDetalleViewController: UIViewController {
 
+    @IBOutlet weak var txtNombre: UITextField!
+    @IBOutlet weak var txtApellido: UITextField!
+    @IBOutlet weak var txtEdad: UITextField!
+    
+    var existePersona: NSManagedObject!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,5 +39,15 @@ class VistaDetalleViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    @IBAction func cancelar(_ sender: Any) {
+    }
+    
+    
 
+    @IBAction func guardarRegistro(_ sender: Any) {
+    }
+    
+    
 }
