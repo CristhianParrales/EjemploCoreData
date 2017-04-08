@@ -50,11 +50,29 @@ class VistaDetalleViewController: UIViewController {
     
     
     @IBAction func cancelar(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
-    
-    
 
     @IBAction func guardarRegistro(_ sender: Any) {
+        // Objeto de la clae ManagedObjectContext
+        let miDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let objetcContext = miDelegate.persistentContainer.viewContext
+        
+        
+        // CREAR UNA INSTANCIA A LA CLASE PERSONA, Y LE ASIGNAMOS LA ENTIDAD Y CONTEXTE
+        let newPersona = NSEntityDescription.insertNewObject(forEntityName: "Persona", into: objetcContext) as! Persona
+        
+        // Mapear cada textField con las propiedades
+        newPersona.nombre = txtNombre.text
+        newPersona.apellido = txtApellido.text
+        newPersona.edad = txtEdad.text
+        
+        miDelegate.saveContext()
+        
+        navigationController?.popViewController(animated: true)
+    
+    
+    
     }
     
     
