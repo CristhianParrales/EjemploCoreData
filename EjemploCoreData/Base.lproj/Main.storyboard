@@ -73,7 +73,7 @@
         <!--Vista Detalle-->
         <scene sceneID="Mh7-9w-gKK">
             <objects>
-                <viewController id="I7C-0e-k3T" sceneMemberID="viewController">
+                <viewController id="I7C-0e-k3T" customClass="VistaDetalleViewController" customModule="EjemploCoreData" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cyN-tt-ONb"/>
                         <viewControllerLayoutGuide type="bottom" id="GBH-Rs-Rgp"/>
