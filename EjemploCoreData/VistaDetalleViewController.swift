@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class VistaDetalleViewController: UIViewController {
+class VistaDetalleViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var txtNombre: UITextField!
     @IBOutlet weak var txtApellido: UITextField!
@@ -17,6 +17,17 @@ class VistaDetalleViewController: UIViewController {
     
     var existePersona: NSManagedObject!
     
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.isEqual(txtNombre) {
+            txtApellido.becomeFirstResponder()
+        } else if textField.isEqual(txtApellido) {
+            txtEdad.becomeFirstResponder()
+        } else if textField.isEqual(txtEdad) {
+            txtEdad.resignFirstResponder()
+        }
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,22 +68,31 @@ class VistaDetalleViewController: UIViewController {
         // Objeto de la clae ManagedObjectContext
         let miDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let objetcContext = miDelegate.persistentContainer.viewContext
+ 
+        if existePersona != nil {
+            // actualizar datos
+            existePersona.setValue(txtNombre.text, forKey: "nombre")
+            existePersona.setValue(txtApellido.text, forKey: "apellido")
+            existePersona.setValue(txtEdad.text, forKey: "edad")
+        
+        } else {
         
         
-        // CREAR UNA INSTANCIA A LA CLASE PERSONA, Y LE ASIGNAMOS LA ENTIDAD Y CONTEXTE
-        let newPersona = NSEntityDescription.insertNewObject(forEntityName: "Persona", into: objetcContext) as! Persona
         
-        // Mapear cada textField con las propiedades
-        newPersona.nombre = txtNombre.text
-        newPersona.apellido = txtApellido.text
-        newPersona.edad = txtEdad.text
+            // CREAR UNA INSTANCIA A LA CLASE PERSONA, Y LE ASIGNAMOS LA ENTIDAD Y CONTEXTE
+            let newPersona = NSEntityDescription.insertNewObject(forEntityName: "Persona", into: objetcContext) as! Persona
         
+            // Mapear cada textField con las propiedades
+            newPersona.nombre = txtNombre.text
+            newPersona.apellido = txtApellido.text
+            newPersona.edad = txtEdad.text
+        
+        }
         miDelegate.saveContext()
         
         navigationController?.popViewController(animated: true)
-    
-    
-    
+        
+
     }
     
     
